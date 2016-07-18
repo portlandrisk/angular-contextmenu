@@ -41,7 +41,6 @@ function Item() {
   function registerMouse(iam, scope, ctrl) {
     iam.element.on('click', function(ev) {
       var multi = ev.ctrlKey || ev.metaKey;
-
       ctrl.get().toggle(iam, multi);
       scope.$apply();
     });
@@ -49,10 +48,6 @@ function Item() {
     iam.element.on('contextmenu', function(ev) {
       // don't show context menu if user holds down ctrl || cmd key
       if (ev.ctrlKey || ev.metaKey) { return; }
-
-      ev.preventDefault();
-      ev.stopPropagation();
-      ev.stopImmediatePropagation();
 
       ctrl.get().open(iam, ev.clientX, ev.clientY);
       scope.$apply();
